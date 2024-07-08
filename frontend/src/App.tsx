@@ -2,8 +2,12 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import { getUsers } from "./api";
 
+type User = {
+  name: string
+}
+
 function App() {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
     getUsers()
