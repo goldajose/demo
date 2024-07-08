@@ -3,12 +3,14 @@ import "./App.css";
 import { getUsers } from "./api";
 
 function App() {
+  const [users, setUsers] = useState([]);
+
   useEffect(() => {
     getUsers()
       .then((data) => setUsers(data))
       .catch((e) => console.log(e));
   }, []);
-  const [users, setUsers] = useState([]);
+
   return (
     <>
       <header>
@@ -17,7 +19,7 @@ function App() {
       <main>
         <ul>
           {users.map((u) => (
-            <li>{u.name}</li>
+            <li key={u.name}>{u.name}</li>
           ))}
         </ul>
       </main>
